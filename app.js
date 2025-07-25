@@ -2,6 +2,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const userRouter = require('./routes/user.routes')
+const indexRouter = require('./routes/index.routes')
 const dotenv = require('dotenv')
 const connecttoDB = require("./config/db")
 const cookieParser = require('cookie-parser')
@@ -19,7 +20,9 @@ app.use(express.urlencoded({extended:true}))
 app.set("view engine", 'ejs')
 
 
+app.use('/', indexRouter)
 app.use('/user', userRouter)
+
 
 
 app.listen(3000)
